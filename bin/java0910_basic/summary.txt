@@ -1,0 +1,74 @@
+﻿1. Java Development Kit
+   https://www.oracle.com/index.html
+
+2. 환경설정
+   컴퓨터-> 속성->고급->환경변수->
+   user1사용자변수-> 새로만들기(편집)
+   -> 변수이름: PATH, 
+      변수값 : C:\Program Files\Java\jdk1.8.0_161\bin
+
+3. 소스입력 : c:\study\HelloWorld.java
+   public class HelloWorld{
+     public static void main(String[] args){
+       System.out.println("Hello!!!");
+     }
+   }
+
+4. 컴파일
+   c:\study>javac HelloWorld.java
+
+5. 실행
+   c:\study>java HelloWorld
+
+6. eclipse (통합개발환경)
+   http://www.eclipse.org/
+
+
+7. workspace
+   C:\study\workspace
+
+8. 다국어 지원 Encoding변경
+   window-preferences-검색창:enc입력
+   - workspace,CSS Files, HTML Files, JSP Files : UTF-8로 변경
+
+9. 텍스트 크기 조절
+   window-preferences-Appearance-Colors and Fonts
+   - (가운데) Basic-Text Font-Edit버튼-크기선택
+
+10. 프로젝트 생성
+   Package Explorer- 단축메뉴 New-project-java project
+   -Project Name: javademo
+
+11. class생성
+    javademo-src- 단축메뉴 New-Class-
+  
+    Package : java0910_basic
+    Name : Java001_main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
