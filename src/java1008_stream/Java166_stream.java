@@ -52,7 +52,6 @@ public class Java166_stream {
 			}
 		}
 		
-		
 		System.out.println("//////////////////////////////");
 		
 		Scanner input = null;
