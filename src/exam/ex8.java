@@ -20,7 +20,7 @@ class User extends Object implements Cloneable{
 		this.gender = gender;
 		this.phone = phone;
 	}
-	
+		
 	@Override
 	public String toString() {
 		return id + " " + password + " " + name + " " + age + " " + gender + " " + phone;
