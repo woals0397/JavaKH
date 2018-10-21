@@ -83,5 +83,6 @@ public class MapTest {
 		Inventory iv = new Inventory("삼성 갤럭시S7", new Date(), 30);
 		map.put("삼성 갤럭시S7", iv);
 		System.out.println(iv.getGetDate());
+		
 	}
 }
