@@ -9,6 +9,7 @@ public class Java148_Calendar {
 		int month = cal.get(Calendar.MONTH) + 1;	// 값을 가져올때 월은 +1해줘야한다.
 		int date = cal.get(Calendar.DATE);
 		
+		
 		int hour = cal.get(Calendar.HOUR);
 		int hour24 = cal.get(Calendar.HOUR_OF_DAY);
 		int minute = cal.get(Calendar.MINUTE);
