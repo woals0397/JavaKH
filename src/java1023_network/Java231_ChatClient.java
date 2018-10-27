@@ -116,7 +116,7 @@ public class Java231_ChatClient implements Runnable, ActionListener {
 	}// end initStart()/////////////////////////////////
 
 	public static void main(String[] args) {
-		Java231_ChatClient client = new Java231_ChatClient("192.168.10.24", 7777);
+		Java231_ChatClient client = new Java231_ChatClient("127.0.0.1", 7777);
 		client.initStart();
 
 	}// end main()
