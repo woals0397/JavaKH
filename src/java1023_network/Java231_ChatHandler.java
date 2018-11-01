@@ -36,6 +36,7 @@ public class Java231_ChatHandler implements Runnable {
 			th.start();
 		} catch (IOException e) {
 			e.printStackTrace();
+			userVec.remove(this);	// 벡터에 저장되어 있는 클라이언트가 접속을 종료했을때 벡터에서 제거해준다.
 		}
 
 	}

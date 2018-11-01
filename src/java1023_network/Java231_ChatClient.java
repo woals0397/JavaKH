@@ -50,16 +50,19 @@ public class Java231_ChatClient implements Runnable, ActionListener {
 		frm = new JFrame("채팅 프로그램 [" + host + ":" + port + "]");
 		taOutput = new JTextArea();
 		taOutput.setEditable(false);
-
+		
+		TimeTest tt = new TimeTest();
+		
 		tfInput = new JTextField(10);
 		pan = new JPanel();
 		lbName = new JLabel("입력: ");
-
+		
 		JScrollPane scroll = new JScrollPane(taOutput);
-
+		
 		frm.add(BorderLayout.CENTER, scroll);
 		frm.add(BorderLayout.SOUTH, pan);
-
+		frm.add(BorderLayout.NORTH, tt);
+		
 		pan.setLayout(new BorderLayout());
 		pan.add(lbName, BorderLayout.WEST);
 		pan.add(tfInput, BorderLayout.CENTER);
@@ -116,7 +119,7 @@ public class Java231_ChatClient implements Runnable, ActionListener {
 	}// end initStart()/////////////////////////////////
 
 	public static void main(String[] args) {
-		Java231_ChatClient client = new Java231_ChatClient("192.168.10.24", 7777);
+		Java231_ChatClient client = new Java231_ChatClient("127.0.0.1", 7777);
 		client.initStart();
 
 	}// end main()

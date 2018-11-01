@@ -26,7 +26,7 @@ public class ListTest {
 		System.out.print("정렬전: ");
 		display(list);
 		
-		
+		list.sort(new Decending());
 		
 		System.out.print("\n정렬후: ");
 		display(list);
