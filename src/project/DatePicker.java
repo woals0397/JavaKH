@@ -2,6 +2,8 @@ package project;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
@@ -29,7 +31,7 @@ public class DatePicker extends JFrame implements ActionListener{
 		
 		datePicker.addActionListener(this);
 		
-		setSize(500, 400);
+		setSize(200, 65);
 		setLocation(400, 200);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,5 +44,8 @@ public class DatePicker extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Date selectDate = (Date) datePicker.getModel().getValue();
+		System.out.println(selectDate.toLocaleString());
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(dateFormat.format(selectDate));
 	}
 }
