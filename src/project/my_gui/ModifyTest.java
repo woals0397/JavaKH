@@ -1,4 +1,4 @@
-package project.my_gui;
+/*package project.my_gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,37 +7,38 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
-import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class ModifyTest extends JFrame implements ActionListener {
+import project.Model.myTest_model;
+
+public class ModifyTest extends JFrame implements ActionListener,ItemListener {
 	// 멤버변수
-	JTextField newid, newpw, newname, newphone, newadr, newbirth; // 아이디, 비밀번호, 이름, 전화번호, 주소, 이메일
+	JTextField newid, newpw, newname, tel1F, tel2F , newadr, newbirth; // 아이디, 비밀번호, 이름, 전화번호, 주소, 이메일
 	JRadioButton man, fman; // 성별선택 : 남, 여
 	JButton modifyBtn; // 회원가입 버튼
+	DefaultComboBoxModel<String> telMmodel;
+	JComboBox<String> telCombo;
+	String tel1 = null; // 전화번호 콤보박스
 
 	// 폰트설정
 	Font font = new Font("맑은 고딕", 1, 15);
-
+	String[] telStr = { "010", "011" , "016"};
+	
 	// 생성자
 	public ModifyTest() {
 		setTitle("회원정보 수정");
 		// 생성
-		// 아이디
-		newid = new JTextField(20);
-		JLabel idLabel = new JLabel("아이디");
-		idLabel.setFont(font);
-		JPanel idPanel = new JPanel();
-		idPanel.add(idLabel);
-		idPanel.add(newid);
-		idPanel.setBackground(Color.WHITE);
-
+		
 		// 비밀번호
 		newpw = new JTextField(20);
 		JLabel pwLabel = new JLabel("비밀번호");
@@ -56,14 +57,46 @@ public class ModifyTest extends JFrame implements ActionListener {
 		namePanel.add(newname);
 		namePanel.setBackground(Color.WHITE);
 
-		// 전화번호
-		newphone = new JTextField(20);
+//		// 전화번호
+		
+		
 		JLabel phoneLable = new JLabel("전화번호");
 		phoneLable.setFont(font);
+		
+		telMmodel = new DefaultComboBoxModel<String>();
+		telMmodel.addElement("010");
+		telMmodel.addElement("011");
+		telMmodel.addElement("016");
+		telCombo = new JComboBox<String>(telMmodel);
+		telCombo.setPreferredSize(new Dimension(65, 21));
+		telCombo.setBackground(Color.WHITE);
+		
+		JPanel tel1 = new JPanel(new FlowLayout());
+		tel1.setBackground(Color.WHITE);
+		tel1.add(telCombo); //콤보박스를 tel1 패널에
+     	JPanel tel2 = new JPanel(new FlowLayout());
+     	tel2.setBackground(Color.WHITE);
+     	tel1F = new JTextField();
+     	tel1F.setPreferredSize(new Dimension(65, 21));
+		tel2.add(tel1F);  //tel2에 텍스트필드 1개
+		
+
+		JPanel tel3 = new JPanel(new FlowLayout());
+		tel3.setBackground(Color.WHITE);
+		tel2F = new JTextField();
+		tel2F.setPreferredSize(new Dimension(65, 21));
+		tel3.add(tel2F);  //tel3에 텍스트필드 두번쨰꺼
+		
+  
 		JPanel phonePanel = new JPanel();
 		phonePanel.add(phoneLable);
-		phonePanel.add(newphone);
+		phonePanel.add(tel1);
+		phonePanel.add(new JLabel("-"));
+		phonePanel.add(tel2);
+		phonePanel.add(new JLabel("-"));
+		phonePanel.add(tel3);
 		phonePanel.setBackground(Color.WHITE);
+		
 
 		// 생년월일
 		newbirth = new JTextField(20);
@@ -83,23 +116,8 @@ public class ModifyTest extends JFrame implements ActionListener {
 		adrPanel.add(newadr);
 		adrPanel.setBackground(Color.WHITE);
 
-		// 성별
-		man = new JRadioButton("남", true);
-		man.setBackground(Color.WHITE);
-		fman = new JRadioButton("여");
-		fman.setBackground(Color.WHITE);
-		ButtonGroup bg = new ButtonGroup();
-		bg.add(man);
-		bg.add(fman);
-		JLabel genLabel = new JLabel("성별");
-		genLabel.setFont(font);
-		JPanel genPanel = new JPanel();
-		genPanel.add(genLabel);
-		genPanel.add(man);
-		genPanel.add(fman);
-		genPanel.setBackground(Color.WHITE);
-
-		// 회원가입버튼
+		
+		
 		modifyBtn = new JButton("수정하기");
 		modifyBtn.setPreferredSize(new Dimension(200, 50));
 		modifyBtn.setFont(font);
@@ -110,15 +128,18 @@ public class ModifyTest extends JFrame implements ActionListener {
 		singupBtnPanel.setBackground(Color.WHITE);
 
 		// 전체레이아웃
-		setLayout(new GridLayout(8, 1));
-		add(idPanel);
+		setLayout(new GridLayout(6, 1));
+		
 		add(pwPanel);
 		add(namePanel);
 		add(birthPanel);
 		add(phonePanel);
 		add(adrPanel);
-		add(genPanel);
+		
 		add(singupBtnPanel);
+		
+		modifyBtn.addActionListener(this);
+		telCombo.addItemListener(this);
 
 		// 기본입력////////////////////////////////////////////////////////////////////////
 		setSize(400, 700);
@@ -130,7 +151,26 @@ public class ModifyTest extends JFrame implements ActionListener {
 	// ActionListener 메소드
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+             Object obj = e.getSource();
+             if(obj==modifyBtn)  modify();
+		                
 	}
 
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		     System.out.println("좀되라");
+		     tel1 = (String) telCombo.getSelectedItem();
+		     System.out.println(tel1);
+		
+	}
+	public void modify() {
+  
+		 String phone = "010-"+tel1F.getText()+"-"+tel2F.getText();
+	     myTest_model.getInstance().modifyDTO(newpw.getText(), newname.getText() , phone , newbirth.getText(), newadr.getText());
+		 
+         dispose();
+	     new myTest();
+   }
+
 }// end class
+*/

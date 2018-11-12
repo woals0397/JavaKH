@@ -87,7 +87,7 @@ public class Reservation_DAO {
 			
 		}//insertMethod
 		
-		public List<String> getReserveTime(String hosName, String docName, String reserveDate) {
+		public List<String> getReserveTime(String hosName, String docName, String reserveDate) {			
 			List<String> impossibleTime = new ArrayList<>();
 
 			try {

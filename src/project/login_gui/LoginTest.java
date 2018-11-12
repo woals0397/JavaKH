@@ -1,4 +1,4 @@
-package project.login_gui;
+/*package project.login_gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -27,15 +27,17 @@ public class LoginTest extends JFrame implements ActionListener {
 	// 로그인 화면
 	JTextField idtf, pwtf; // 아이디, 비번 입력
 	JButton logBtn, addBtn, fidBtn, fpwBtn; // 로그인(log), 회원가입(add), 아이디 찾기(find id > fid), 비번 찾기(find pw > fpw)
-	
+
 	//폰트설정
 	Font font = new Font("맑은 고딕", 1, 20);
 	
 	//화면전환용 변수 생성
 	//TransformTest frame;
+    
+	public static String id=null;  //로그인성공시 해당아이디값을  뒤에서도 참조 변수.	
 	
 	//생성자
-	public LoginTest(/*TransformTest frame*/) {
+	public LoginTest(TransformTest frame) {
 		//this.frame = frame;
 		//setLayout(null);
 		setTitle("병원 프로그램");
@@ -122,10 +124,10 @@ public class LoginTest extends JFrame implements ActionListener {
 		
 		add(total_login);
 		
-		/*setLayout(new GridLayout(3, 1));
+		setLayout(new GridLayout(3, 1));
 		add(title);
 		add(log);
-		add(low);*/
+		add(low);
 
 		// 리스너연결///////////////////////////////////////////////////////////////////
 		logBtn.addActionListener(this);
@@ -151,6 +153,7 @@ public class LoginTest extends JFrame implements ActionListener {
 			// 성공시 화면전환 -> ChoiceTest
 		
 			int chk = Login_model.getInstance().loginCheck(idtf.getText(),pwtf.getText());
+			id = idtf.getText();
 			if(chk==1)
 			{
 				System.out.println("아이디비번 확인완료");
@@ -167,7 +170,6 @@ public class LoginTest extends JFrame implements ActionListener {
 			init();
 		} else if (obj == addBtn) {
 			// 회원가입 버튼
-			
 			new SignUpTest();
 			
 		} else if (obj == fidBtn) {
@@ -177,7 +179,7 @@ public class LoginTest extends JFrame implements ActionListener {
 			// 비밀번호 찾기 버튼
 			new FindPw();
 
-		}
+		} 
 
 	}// end actionPerformed()
 
@@ -193,3 +195,4 @@ public class LoginTest extends JFrame implements ActionListener {
 	}// end main()
 
 }// end LoginTest
+*/

@@ -1,19 +1,13 @@
 package project.reserve_gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Panel;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -24,7 +18,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSpinner.DateEditor;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -36,7 +29,7 @@ import project.Model.Reservation_model;
 public class SelectTest extends JFrame implements ActionListener {
 	String selectDept;
 	JLabel drL, dateL, timeL, hosL, symptomL;
-	JComboBox<String> dr, time, hos;
+	static JComboBox<String> dr, time, hos;
 	JTextField info;
 	JTextArea symptom;
 	JButton reserveB;
@@ -49,11 +42,11 @@ public class SelectTest extends JFrame implements ActionListener {
 	List<RequestData> requestInfo;
 	List<String> selectDr;
 	
-	DatePicker datepicker;
+	static DatePicker datepicker;
 	
-	String hosName = "";
-	String drName = "";
-	String selectDate = "";
+	static String hosName = "";
+	static String drName = "";
+	static String selectDate = "";
 	
 	public SelectTest(String selectDept) {
 		
@@ -155,7 +148,6 @@ public class SelectTest extends JFrame implements ActionListener {
 		time = new JComboBox<>();
 		time.addItem("시간을 선택하세요.");
 		time.setFont(font);
-		// time.setBackground(Color.WHITE);
 		
 		p3.add(dateL);
 		datepicker = new DatePicker();
@@ -163,7 +155,6 @@ public class SelectTest extends JFrame implements ActionListener {
 		p3.add(datepicker);
 		p3.add(timeL);
 		p3.add(time);
-		
 		p3.setBackground(Color.white);
 		
 		// 예약버튼
@@ -181,7 +172,6 @@ public class SelectTest extends JFrame implements ActionListener {
 		top.add(p1);
 		top.add(top2);
 		
-		JPanel XXXX = new JPanel();
 		JPanel bot = new JPanel(new GridLayout(2, 1));
 		bot.add(p3);
 		bot.add(p4);
@@ -228,16 +218,15 @@ public class SelectTest extends JFrame implements ActionListener {
 			if (chk == JOptionPane.YES_OPTION) {
 				if(hosName.equals("") || drName.equals("") || datepicker.getDateCheck() == 0 || datepicker.getDateCheck() == 3) {
 					if(datepicker.getDateCheck() == 0) {
-						JOptionPane.showMessageDialog(this, "입력하지 않은 값이 존재합니다. 다시 확인해주세요.", "예약", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(this, "입력하지 않은 값이 존재합니다. 다시 확인해주세요.", "예약", JOptionPane.ERROR_MESSAGE);
 					}else if(datepicker.getDateCheck() == 3) {
-						JOptionPane.showMessageDialog(this, "이미 지난 날짜입니다. 날짜를 다시 선택해주세요.", "예약", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(this, "이미 지난 날짜입니다. 날짜를 다시 선택해주세요.", "예약", JOptionPane.ERROR_MESSAGE);
 					}
 				}else {
 					Reservation_DAO.getInstance().insertMethod(Reservation_model.getInstance().getReservation_DTO("a", hosName, selectDept, drName, symptom.getText(), selectDate, time.getSelectedItem().toString()));
 					JOptionPane.showMessageDialog(this, "예약 완료되었습니다.", "예약", JOptionPane.PLAIN_MESSAGE);
 					
-					//창닫기 안됨...
-					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					dispose();
 				}
 			} else {
 				JOptionPane.showMessageDialog(this, " 취소되었습니다.", "예약", JOptionPane.PLAIN_MESSAGE);
@@ -249,13 +238,15 @@ public class SelectTest extends JFrame implements ActionListener {
 			}else {
 				dr.setModel(new DefaultComboBoxModel<String>(new String[]{"의사를 선택하세요."}));
 			}
-		} else if (hos.getSelectedIndex() != 0 && obj == datepicker) {
-			hosName = hos.getSelectedItem().toString();
-			drName = dr.getSelectedItem().toString();
-			selectDate = datepicker.getSelectDate();
-			
-			time.setModel(new DefaultComboBoxModel<String>(Reservation_model.getInstance().getPossibleTime(hosName, drName, selectDate, datepicker.getDateCheck())));
 		}
+	}
+	
+	public static void makeTimeTable() {
+		hosName = hos.getSelectedItem().toString();
+		drName = dr.getSelectedItem().toString();
+		selectDate = datepicker.getSelectDate();	
+		
+		time.setModel(new DefaultComboBoxModel<String>(Reservation_model.getInstance().getPossibleTime(hosName, drName, selectDate, datepicker.getDateCheck())));
 	}
 
 }

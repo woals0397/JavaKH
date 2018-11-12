@@ -18,8 +18,6 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
-import project.Model.Reservation_model;
-
 public class DatePicker extends JPanel implements ActionListener {
 	JDatePickerImpl datePicker;
 	Date currentDay;
@@ -44,29 +42,34 @@ public class DatePicker extends JPanel implements ActionListener {
 		datePicker.addActionListener(this);
 
 		setSize(200, 65);
-		// setLocation(400, 200);
 		setVisible(true);
-		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		currentDay = new Date();
 		Date selectDay = (Date) datePicker.getModel().getValue();
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd",  Locale.KOREA);
-
-		System.out.println(dateFormat.format(currentDay));
-		this.currentDate = dateFormat.format(currentDay);
-		System.out.println(dateFormat.format(selectDay));
-		this.selectDate = dateFormat.format(selectDay);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
 		
+		this.currentDate = dateFormat.format(currentDay);
+		this.selectDate = dateFormat.format(selectDay);
+
 		if (currentDay.compareTo(selectDay) < 0) {
 			this.dateCheck = 1;
+			if(SelectTest.hos.getSelectedIndex() != 0)
+				SelectTest.makeTimeTable();
+			else
+				SelectTest.time.setModel(new DefaultComboBoxModel<String>(new String[] { "시간을 선택하세요." }));
 		} else if (dateFormat.format(currentDay).equals(dateFormat.format(selectDay))) {
 			this.dateCheck = 2;
+			if(SelectTest.hos.getSelectedIndex() != 0)
+				SelectTest.makeTimeTable();
+			else
+				SelectTest.time.setModel(new DefaultComboBoxModel<String>(new String[] { "시간을 선택하세요." }));
 		} else {
-			JOptionPane.showMessageDialog(this, "이미 지난 날짜를 선택하였습니다.", "예약", JOptionPane.WARNING_MESSAGE);
 			this.dateCheck = 3;
+			JOptionPane.showMessageDialog(this, "이미 지난 날짜를 선택하였습니다.", "예약", JOptionPane.WARNING_MESSAGE);
+			SelectTest.time.setModel(new DefaultComboBoxModel<String>(new String[] { "시간을 선택하세요." }));
 		}
 
 	}
@@ -78,9 +81,4 @@ public class DatePicker extends JPanel implements ActionListener {
 	public int getDateCheck() {
 		return dateCheck;
 	}
-	
-	public JDatePickerImpl getDatePikcer() {
-		return datePicker;
-	}
-	
 }

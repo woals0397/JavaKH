@@ -1,27 +1,6 @@
 package project.reserve_gui;
 
-/*
-1  C - 순환기내과(Cardiology) : 고혈압, 심장병을 비롯한 순환기 질환
-2  P - 호흡기내과(Pulmonology) : 기관지염, 폐결핵같은 호흡기 질환
-3  GI - 소화기내과(GastroIntestinal MG) : 위, 간, 장 같은 소화기 질환'
-4  N - 신장내과(Nephrology)사구체신염, 신부전등의 신장질환
-5  E - 내분비내과(Endocrinology) : 당뇨병, 갑상선 같은 호르몬 관련 질환
-6  CS - 흉부외과(ChestSurgery) : 흉부외과', '심장, 폐등에 대한 질환
-7  OS - 정형외과(OrthoSurgery, 또는 OsteoSurgery) : 팔, 다리에 대한 수술
-8  PS - 성형외과(Plastic Surgery) :안면부 및 기타 재건/미용 목적의 수술
-9  NS 신경외과(NeuroSurgery) : '뇌, 척수등 신경계에 대한 수술'
-10 PD - 소아과(PeDiatrics) : 소아에 대한 종합적인 질환
-11 OB & GY - 산부인과(OBstetrics & GYnecology) : 출산 및 여성에게만 생기는 질환
-12 NP - 신경정신과(NeuroPsychiatry) : 정신과, 불안장애, 우울증, 공황장애 등 정신질환에 대한 진료
-13 EY - 안과(EYe) : 눈에 대한 질환
-14 DR - 피부과(DeRmatology) : 피부에 대한 질환
-15 U - 비뇨기과(urology) : 비뇨, 생식기에 대한 질환
-16 D - 치과(dentistry) : 이, 잇몸등 구강내에 대한 진료
-17 ENT - 이비인후과(Ear, Nose & Throat) : 귀, 코, 목에 대한 질환
- */
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;

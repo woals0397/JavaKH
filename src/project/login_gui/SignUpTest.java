@@ -1,4 +1,4 @@
-package project.login_gui;
+/*package project.login_gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -24,13 +24,17 @@ import javax.swing.JTextField;
 
 import project.Dao.Patientinfo_DAO;
 import project.Dto.Patientinfo_DTO;
+import project.Model.Login_model;
+import project.Model.myTest_model;
 
 //회원가입 GUI
 public class SignUpTest extends JFrame implements ActionListener , ItemListener {
 	// 멤버변수
-	JTextField newid, newpw, newname, newphone, newadr, newbirth; // 아이디, 비밀번호, 이름, 전화번호, 주소, 이메일
+	JTextField newid, newpw, newname, tel1F, tel2F, newadr, newbirth; // 아이디, 비밀번호, 이름, 전화번호, 주소, 이메일
 	JRadioButton man, fman; // 성별선택 : 남, 여
 	JComboBox<String> questionBox; // 비밀번호 찾기 질문
+	DefaultComboBoxModel<String> telMmodel;
+	JComboBox<String> telCombo;
 	JTextField answer; // 비밀번호 찾기 답변
 	JButton singupBtn; // 회원가입 버튼
 
@@ -80,12 +84,41 @@ public class SignUpTest extends JFrame implements ActionListener , ItemListener 
 		birthPanel.setBackground(Color.WHITE);
 
 		// 전화번호
-		newphone = new JTextField(20);
 		JLabel phoneLable = new JLabel("전화번호");
 		phoneLable.setFont(font);
+		
+		telMmodel = new DefaultComboBoxModel<String>();
+		telMmodel.addElement("010");
+		telMmodel.addElement("011");
+		telMmodel.addElement("016");
+		telCombo = new JComboBox<String>(telMmodel);
+		telCombo.setPreferredSize(new Dimension(65, 21));
+		telCombo.setBackground(Color.WHITE);
+		
+		JPanel tel1 = new JPanel(new FlowLayout());
+		tel1.setBackground(Color.WHITE);
+		tel1.add(telCombo); //콤보박스를 tel1 패널에
+     	JPanel tel2 = new JPanel(new FlowLayout());
+     	tel2.setBackground(Color.WHITE);
+     	tel1F = new JTextField();
+     	tel1F.setPreferredSize(new Dimension(65, 21));
+		tel2.add(tel1F);  //tel2에 텍스트필드 1개
+		
+
+		JPanel tel3 = new JPanel(new FlowLayout());
+		tel3.setBackground(Color.WHITE);
+		tel2F = new JTextField();
+		tel2F.setPreferredSize(new Dimension(65, 21));
+		tel3.add(tel2F);  //tel3에 텍스트필드 두번쨰꺼
+		
+  
 		JPanel phonePanel = new JPanel();
 		phonePanel.add(phoneLable);
-		phonePanel.add(newphone);
+		phonePanel.add(tel1);
+		phonePanel.add(new JLabel("-"));
+		phonePanel.add(tel2);
+		phonePanel.add(new JLabel("-"));
+		phonePanel.add(tel3);
 		phonePanel.setBackground(Color.WHITE);
 		
 		
@@ -189,20 +222,20 @@ public class SignUpTest extends JFrame implements ActionListener , ItemListener 
 		 Object obj =  e.getSource();
 		 if(obj==singupBtn)
 		 {
-			 System.out.println("회원가입이 눌러짐");
 			 insert(); 
-			 newid.setText("");
-			 newpw.setText("");
-			 newname.setText("");
-			 newbirth.setText("");
-			 newphone.setText("");
-			 newadr.setText("");
-			 man.setSelected(true);
-			 questionBox.setSelectedIndex(0);
-			 answer.setText("");
+//			 newid.setText("");
+//			 newpw.setText("");
+//			 newname.setText("");
+//			 newbirth.setText("");
+//			 tel1F.setText("");
+//			 tel2F.setText("");
+//			 newadr.setText("");
+//			 man.setSelected(true);
+//			 questionBox.setSelectedIndex(0);
+//			 answer.setText("");
 			 
 		 }
-		 dispose();
+		 
 	}
 
 	@Override
@@ -216,7 +249,7 @@ public class SignUpTest extends JFrame implements ActionListener , ItemListener 
 		 String pw = newpw.getText();
 		 String name = newname.getText();
 		 String birth = newbirth.getText();
-		 String phone =newphone.getText();
+		 String phone = "010-"+tel1F.getText()+"-"+tel2F.getText();
 		 String adr = newadr.getText();
 		 String gen=null;
 		 if (man.isSelected()) {
@@ -225,12 +258,26 @@ public class SignUpTest extends JFrame implements ActionListener , ItemListener 
 				gen = fman.getText();
 			} 
 		 String ans = answer.getText();
+		 
+		 
+		 //회원정보등록
 		 Patientinfo_DTO  pi = new Patientinfo_DTO();
 		 pi.setId(id); pi.setPassword(pw); pi.setName(name); pi.setBirth(birth); pi.setAddress(adr);
 		 pi.setPhone(phone);  pi.setGender(gen); pi.setQuestion(question); pi.setAnswer(ans);
-		 Patientinfo_DAO.getInstance().insertMethod(pi);
+		 
+		 String result = Login_model.getInstance().validityCheck(pi); //회원가입 삽입전 유효성검사
+		 
+		 if(result==null) {
+			 Patientinfo_DAO.getInstance().insertMethod(pi);
+			 dispose();
+		 }else {
+			 System.out.println(result);
+			 
+		 }
+		 
 		 
 		 
     }
     
 }// end SignUpTest()
+*/

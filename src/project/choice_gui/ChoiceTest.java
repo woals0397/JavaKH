@@ -1,4 +1,4 @@
-package project.choice_gui;
+/*package project.choice_gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import project.info_gui.InfoTest;
+import project.login_gui.LoginTest;
 import project.login_gui.TransformTest;
 import project.my_gui.myTest;
 
@@ -31,11 +32,12 @@ public class ChoiceTest extends JFrame implements ActionListener{
 	
 	//화면전환용 변수 생성
 	//TransformTest frame;
-		
+
 	//생성자
-	public ChoiceTest(/*TransformTest frame*/) {
+	public ChoiceTest(TransformTest frame) {
 		//this.frame = frame;
 		//setLayout(null);
+		
 		setTitle("기능 선택하기");
 		
 		//생성
@@ -170,3 +172,4 @@ public class ChoiceTest extends JFrame implements ActionListener{
 	
 
 }//end class
+*/
