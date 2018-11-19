@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import test.BirthPicker;
 
 public class test extends JFrame implements ActionListener{
 	JPanel panelBirth;
@@ -38,4 +40,3 @@ public class test extends JFrame implements ActionListener{
 		System.out.println(SelectBirth.getBirth());
 	}
 }
-*/

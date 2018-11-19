@@ -1,4 +1,4 @@
-/*package project.choice_gui;
+package project.choice_gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -34,7 +34,7 @@ public class ChoiceTest extends JFrame implements ActionListener{
 	//TransformTest frame;
 
 	//생성자
-	public ChoiceTest(TransformTest frame) {
+	public ChoiceTest(/*TransformTest frame*/) {
 		//this.frame = frame;
 		//setLayout(null);
 		
@@ -172,4 +172,3 @@ public class ChoiceTest extends JFrame implements ActionListener{
 	
 
 }//end class
-*/

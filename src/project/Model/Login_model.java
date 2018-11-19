@@ -1,7 +1,20 @@
 package project.Model;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
+import project.Dao.Department_DAO;
+import project.Dao.FirstAid_DAO;
+import project.Dao.Medicine_DAO;
 import project.Dao.Patientinfo_DAO;
+import project.Dao.Reservation_DAO;
+import project.Dto.Department_DTO;
+import project.Dto.FirstAid_DTO;
+import project.Dto.Medicine_DTO;
 import project.Dto.Patientinfo_DTO;
+import project.Dto.Reservation_DTO;
 
 public class Login_model {
 
@@ -38,7 +51,7 @@ public class Login_model {
 
 	//비밀번호찾기 
 	public String passCheck(String id,String que,String anwswer)
-	{
+	{   
 		String pass = null;
 		Patientinfo_DTO dto = Patientinfo_DAO.getInstance().checkId(id);
 		if(dto.getId()==null) {
@@ -63,18 +76,16 @@ public class Login_model {
 		String result=null;
 		
 		String id = pi.getId();
-		System.out.println(id);
+		boolean chk = Patientinfo_DAO.getInstance().validityId(id);
 		String pass = pi.getPassword();
-		System.out.println(pass);
 		String name = pi.getName();
-		System.out.println(name);
 		String birth=pi.getBirth();
 		String address = pi.getAddress();
 	    String phone = pi.getPhone();
 		String gender = pi.getGender();
 		String ques = pi.getQuestion();
 		String answer = pi.getAnswer();
-		
+		if(chk==false) { return "해당아이디는 이미 있습니다"; }
 		
 		   //공백이 1개이상이거나              //길이가 6이상이 12이하가 아니거나          
 		if(  (id.matches("\\s{1,}")) || !(id.matches("[\\w]{6,12}")) ||  !(id.matches("^[a-zA-Z]{1}[a-zA-Z0-9_]{4,11}$"))  ){

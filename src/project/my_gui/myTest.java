@@ -1,5 +1,6 @@
-/*package my_gui;
+package project.my_gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -19,7 +20,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
+import javax.swing.plaf.synth.SynthSpinnerUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
@@ -27,6 +30,7 @@ import javax.swing.table.TableColumnModel;
 import project.Dto.Patientinfo_DTO;
 import project.Dto.Reservation_DTO;
 import project.Dto.ReserveComplete_DTO;
+import project.Model.myTest_model;
 import project.login_gui.LoginTest;
 
 public class myTest extends JFrame implements ActionListener, MouseListener {
@@ -237,11 +241,11 @@ public class myTest extends JFrame implements ActionListener, MouseListener {
 		add(recodePanel_sum);
 
 		// 전체적인 여백 주기
-		
+		/*
 		 * setLayout(new BorderLayout()); add("Center", sum); add("East", new
 		 * JLabel("  ")); add("West", new JLabel("  ")); add("South", new JLabel("  "));
 		 * add("North", new JLabel("  "));
-		 
+		 */
 
 		// 리스너 연결
 		modiBtn.addActionListener(this);
@@ -263,10 +267,10 @@ public class myTest extends JFrame implements ActionListener, MouseListener {
 	@Override
    public void actionPerformed(ActionEvent e) {
        Object obj = e.getSource();
-       if(obj==modiBtn) { new ModifyTest(); }  //회원정보수정 버튼
+       /*if(obj==modiBtn) { new ModifyTest(); }  //회원정보수정 버튼
        else if(obj==finishBtn) {      reservFinish();       } // 진료완료버튼
        else if(obj==revokeBtn) {      reservCancel();       } // 진료취소버튼
-      
+      */
    }
              
 	public void reservFinish() {  //진료완료
@@ -314,6 +318,10 @@ public class myTest extends JFrame implements ActionListener, MouseListener {
 		}
 
 	}// setTable
+	public static void main(String[] args) {
+		new myTest();
+	}
+	
 	
 	private void setRecorTable(List<ReserveComplete_DTO> rclist) { //진료기록 테이블에 값넣기.
 		for (ReserveComplete_DTO dto : rclist) {
@@ -361,4 +369,4 @@ public class myTest extends JFrame implements ActionListener, MouseListener {
 
 	}
 
-}// end class*/
+}// end class

@@ -1,4 +1,4 @@
-/*package project.Model;
+package project.Model;
 
 import java.util.List;
 
@@ -53,4 +53,3 @@ public class myTest_model {
 		return list;
 	}
 }
-*/

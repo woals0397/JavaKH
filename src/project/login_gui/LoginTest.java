@@ -1,4 +1,4 @@
-/*package project.login_gui;
+package project.login_gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -37,7 +37,7 @@ public class LoginTest extends JFrame implements ActionListener {
 	public static String id=null;  //로그인성공시 해당아이디값을  뒤에서도 참조 변수.	
 	
 	//생성자
-	public LoginTest(TransformTest frame) {
+	public LoginTest(/*TransformTest frame*/) {
 		//this.frame = frame;
 		//setLayout(null);
 		setTitle("병원 프로그램");
@@ -124,10 +124,10 @@ public class LoginTest extends JFrame implements ActionListener {
 		
 		add(total_login);
 		
-		setLayout(new GridLayout(3, 1));
+		/*setLayout(new GridLayout(3, 1));
 		add(title);
 		add(log);
-		add(low);
+		add(low);*/
 
 		// 리스너연결///////////////////////////////////////////////////////////////////
 		logBtn.addActionListener(this);
@@ -195,4 +195,3 @@ public class LoginTest extends JFrame implements ActionListener {
 	}// end main()
 
 }// end LoginTest
-*/

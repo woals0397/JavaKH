@@ -212,6 +212,35 @@ public class Patientinfo_DAO {
 		}
 		return dto;
 	}
+	
+	//회원가입시 아이디중복체크 메소드
+	public boolean validityId(String id) {
+		boolean chk = false;
+		try {
+
+			conn = init();
+			String sql = "select * from patientinfo WHERE id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (!rs.isBeforeFirst()) {
+				chk = true;
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				exit();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return chk;
+	}
+	
 
 	// 마이페이지 회원정보수정 메소드
 	public void modifyMethod(Patientinfo_DTO dto) {

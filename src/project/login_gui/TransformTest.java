@@ -1,4 +1,4 @@
-/*package project.login_gui;
+package project.login_gui;
 
 import javax.swing.JFrame;
 
@@ -22,7 +22,7 @@ public class TransformTest extends JFrame{
 		}
 	}//end transform()
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		TransformTest frame = new TransformTest();
 
 		frame.login_gui = new LoginTest(frame);
@@ -33,7 +33,6 @@ public class TransformTest extends JFrame{
 		frame.setSize(500, 700);
 		frame.setLocation(1100, 250);
 		frame.setVisible(true);
-	}
+	}*/
 	
 }//end class
-*/

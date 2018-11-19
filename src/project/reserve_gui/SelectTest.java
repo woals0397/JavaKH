@@ -216,8 +216,10 @@ public class SelectTest extends JFrame implements ActionListener {
 		if (obj == reserveB) {
 			int chk = JOptionPane.showConfirmDialog(this, "예약하시겠습니까?", "예약", JOptionPane.YES_NO_OPTION);
 			if (chk == JOptionPane.YES_OPTION) {
-				if(hosName.equals("") || drName.equals("") || datepicker.getDateCheck() == 0 || datepicker.getDateCheck() == 3) {
-					if(datepicker.getDateCheck() == 0) {
+				System.out.println(time.getSelectedItem().toString());
+				System.out.println(time.getSelectedItem().toString().equals("예약날짜를 선택하세요."));
+				if(hosName.equals("") || drName.equals("") || datepicker.getDateCheck() == 0 || datepicker.getDateCheck() == 3 || time.getSelectedItem().toString().equals("예약날짜를 선택하세요.")) {
+					if(datepicker.getDateCheck() == 0 || time.getSelectedItem().toString().equals("예약날짜를 선택하세요.")) {
 						JOptionPane.showMessageDialog(this, "입력하지 않은 값이 존재합니다. 다시 확인해주세요.", "예약", JOptionPane.ERROR_MESSAGE);
 					}else if(datepicker.getDateCheck() == 3) {
 						JOptionPane.showMessageDialog(this, "이미 지난 날짜입니다. 날짜를 다시 선택해주세요.", "예약", JOptionPane.ERROR_MESSAGE);
@@ -232,12 +234,15 @@ public class SelectTest extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(this, " 취소되었습니다.", "예약", JOptionPane.PLAIN_MESSAGE);
 			}
 		} else if (obj == hos) {
+			time.setModel(new DefaultComboBoxModel<String>(new String[]{"예약날짜를 선택하세요."}));
 			if(hos.getSelectedIndex() != 0) {
 				selectDr = Reservation_model.getInstance().getDoc_name(requestInfo, hos.getSelectedItem().toString());
 				dr.setModel(new DefaultComboBoxModel<String>(selectDr.toArray(new String[selectDr.size()])));
 			}else {
 				dr.setModel(new DefaultComboBoxModel<String>(new String[]{"의사를 선택하세요."}));
 			}
+		} else if(obj == dr) {
+			time.setModel(new DefaultComboBoxModel<String>(new String[]{"예약날짜를 선택하세요."}));
 		}
 	}
 	

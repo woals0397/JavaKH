@@ -1,4 +1,4 @@
-/*package project.login_gui;
+package project.login_gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,6 +22,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import project.BirthPicker;
 import project.Dao.Patientinfo_DAO;
 import project.Dto.Patientinfo_DTO;
 import project.Model.Login_model;
@@ -31,6 +32,7 @@ import project.Model.myTest_model;
 public class SignUpTest extends JFrame implements ActionListener , ItemListener {
 	// 멤버변수
 	JTextField newid, newpw, newname, tel1F, tel2F, newadr, newbirth; // 아이디, 비밀번호, 이름, 전화번호, 주소, 이메일
+	BirthPicker birthPicker; // 생년월일
 	JRadioButton man, fman; // 성별선택 : 남, 여
 	JComboBox<String> questionBox; // 비밀번호 찾기 질문
 	DefaultComboBoxModel<String> telMmodel;
@@ -41,7 +43,7 @@ public class SignUpTest extends JFrame implements ActionListener , ItemListener 
 	// 폰트설정
 	Font font = new Font("맑은 고딕", 1, 15);
 
-	String question = null; // 2차비번 질문
+	String question = "본인의 보물 1호는?"; // 2차비번 질문
 	
 	// 생성자
 	public SignUpTest() {
@@ -75,12 +77,12 @@ public class SignUpTest extends JFrame implements ActionListener , ItemListener 
 		namePanel.setBackground(Color.WHITE);
 
 		// 생년월일
-		newbirth = new JTextField(20);
+		birthPicker = new BirthPicker();
 		JLabel birthLabel = new JLabel("생년월일");
 		birthLabel.setFont(font);
 		JPanel birthPanel = new JPanel();
 		birthPanel.add(birthLabel);
-		birthPanel.add(newbirth);
+		birthPanel.add(birthPicker);
 		birthPanel.setBackground(Color.WHITE);
 
 		// 전화번호
@@ -162,6 +164,7 @@ public class SignUpTest extends JFrame implements ActionListener , ItemListener 
 		
 		// 콤보박스
 		questionBox = new JComboBox<String>(model);
+		questionBox.setSelectedIndex(0);
 		JLabel quesLabel = new JLabel("질문");
 		quesLabel.setFont(font);
 		JPanel quesPanel = new JPanel();
@@ -203,13 +206,15 @@ public class SignUpTest extends JFrame implements ActionListener , ItemListener 
 		
 		
 		//리스너
+		
+		
 		singupBtn.addActionListener(this);
         questionBox.addItemListener(this);
         
         
 		// 기본입력////////////////////////////////////////////////////////////////////////
 		setSize(400, 700);
-		setLocation(1500, 350);
+		setLocation(100, 100);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // 회원가입 창만 나가도록
 
@@ -275,9 +280,6 @@ public class SignUpTest extends JFrame implements ActionListener , ItemListener 
 			 
 		 }
 		 
-		 
-		 
     }
     
 }// end SignUpTest()
-*/
